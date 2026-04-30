@@ -6,11 +6,7 @@
 <title>Lunavera — Coming Soon</title>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
 <style>
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
+* { margin: 0; padding: 0; box-sizing: border-box; }
 
 :root {
   --bg1: #0a0a0f;
@@ -31,58 +27,43 @@ body {
   overflow-x: hidden;
 }
 
-/* Bintang latar kedip (opsional, biar tidak kosong) */
+/* Bintang latar kedip */
 body::before {
   content: "";
   position: fixed;
   inset: 0;
   pointer-events: none;
-  background-image: radial-gradient(2px 2px at 15px 40px, rgba(255,245,210,0.5) 1%, transparent 1%),
-                    radial-gradient(1px 1px at 70px 120px, rgba(255,245,210,0.3) 1%, transparent 1%),
-                    radial-gradient(2px 2px at 300px 80px, rgba(255,245,210,0.6) 1%, transparent 1%);
-  background-size: 200px 200px, 150px 150px, 250px 250px;
+  background-image: radial-gradient(2px 2px at 15px 40px, rgba(255,245,210,0.6) 1%, transparent 1%),
+                    radial-gradient(1px 1px at 70px 120px, rgba(255,245,210,0.4) 1%, transparent 1%),
+                    radial-gradient(2px 2px at 300px 80px, rgba(255,245,210,0.7) 1%, transparent 1%),
+                    radial-gradient(1px 1px at 550px 250px, rgba(255,245,210,0.5) 1%, transparent 1%);
+  background-size: 200px 200px, 150px 150px, 250px 250px, 180px 180px;
   background-repeat: repeat;
-  opacity: 0.4;
-  animation: starTwinkle 5s infinite alternate;
+  opacity: 0.5;
+  animation: starTwinkle 6s infinite alternate;
 }
+@keyframes starTwinkle { 0% { opacity: 0.3; } 100% { opacity: 0.8; } }
 
-@keyframes starTwinkle {
-  0% { opacity: 0.2; }
-  100% { opacity: 0.7; }
-}
-
-/* BULAN SABIT HITAM dengan pinggiran PUTIH */
-.moon {
+/* SVG bulan sabit - hitam dengan stroke putih */
+.moon-svg {
   position: absolute;
-  top: 12%;
+  top: 8%;
   left: 50%;
   transform: translateX(-50%);
-  width: 140px;
-  height: 140px;
-  border-radius: 50%;
-  background: #000000;  /* hitam solid */
-  box-shadow: 0 0 0 2px #ffffff; /* pinggiran putih rapi */
-  z-index: 2;
+  width: 120px;
+  height: 120px;
+  z-index: 5;
   animation: moonFloat 6s ease-in-out infinite;
+  filter: drop-shadow(0 0 2px rgba(255,255,255,0.5));
 }
-
-/* Membentuk sabit (bagian yang terpotong) */
-.moon::after {
-  content: "";
-  position: absolute;
+.moon-svg svg {
   width: 100%;
   height: 100%;
-  border-radius: 50%;
-  background: radial-gradient(circle at 70% 35%, transparent 25%, #000 50%);
-  mask: radial-gradient(circle at 70% 35%, transparent 20%, black 45%);
-  -webkit-mask: radial-gradient(circle at 70% 35%, transparent 20%, black 45%);
-  top: 0;
-  left: 0;
+  display: block;
 }
-
 @keyframes moonFloat {
   0% { transform: translateX(-50%) translateY(0px) rotate(0deg); }
-  50% { transform: translateX(-50%) translateY(-10px) rotate(2deg); }
+  50% { transform: translateX(-50%) translateY(-12px) rotate(4deg); }
   100% { transform: translateX(-50%) translateY(0px) rotate(0deg); }
 }
 
@@ -91,7 +72,7 @@ body::before {
   position: relative;
   width: 90%;
   max-width: 480px;
-  margin-top: 80px;
+  margin-top: 100px; /* ruang untuk bulan di atas */
   padding: 2rem 1.5rem;
   text-align: center;
   background: rgba(10, 10, 18, 0.55);
@@ -170,24 +151,14 @@ body::before {
   border: 1px solid rgba(255,235,200,0.5);
   color: #fff3e0;
 }
-
-.btn-main:hover {
-  background: #fff3e0;
-  color: #0f0f1a;
-  transform: scale(1.02);
-}
+.btn-main:hover { background: #fff3e0; color: #0f0f1a; transform: scale(1.02); }
 
 .btn-secondary {
   background: rgba(20,20,35,0.7);
   border: 1px solid rgba(255,255,255,0.2);
   color: #cdcddf;
 }
-
-.btn-secondary:hover {
-  background: rgba(230,200,160,0.2);
-  border-color: #e6c8a0;
-  color: #fff;
-}
+.btn-secondary:hover { background: rgba(230,200,160,0.2); border-color: #e6c8a0; color: #fff; }
 
 .footer {
   position: absolute;
@@ -199,23 +170,31 @@ body::before {
   z-index: 10;
 }
 
-/* Responsif */
 @media (max-width: 560px) {
-  .moon {
-    width: 100px;
-    height: 100px;
-    top: 8%;
-  }
+  .moon-svg { width: 90px; height: 90px; top: 5%; }
+  .wrap { margin-top: 80px; padding: 1.3rem; }
   .logo { font-size: 1.8rem; }
   .count { font-size: 1.4rem; }
-  .wrap { margin-top: 70px; padding: 1.3rem; }
   .btn-main, .btn-secondary { width: 180px; }
 }
 </style>
 </head>
 <body>
 
-<div class="moon" aria-label="Bulan sabit hitam dengan pinggiran putih"></div>
+<!-- Bulan sabit SVG (hitam dengan stroke putih) -->
+<div class="moon-svg">
+  <svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <path d="M50 10 
+             C 78 10, 90 35, 90 50 
+             C 90 65, 78 90, 50 90 
+             C 58 75, 65 62, 65 50 
+             C 65 38, 58 25, 50 10 Z" 
+          fill="#000000" 
+          stroke="#ffffff" 
+          stroke-width="2.5" 
+          stroke-linejoin="round"/>
+  </svg>
+</div>
 
 <div class="wrap">
   <div class="logo">LUNAVERA</div>
@@ -234,14 +213,10 @@ body::before {
 <script>
 const target = new Date("2027-06-01 00:00:00").getTime();
 const el = document.getElementById("count");
-
 setInterval(() => {
   const now = Date.now();
   const diff = target - now;
-  if (diff <= 0) {
-    el.innerHTML = "WE ARE LIVE";
-    return;
-  }
+  if (diff <= 0) { el.innerHTML = "WE ARE LIVE"; return; }
   const days = Math.floor(diff / (1000*60*60*24));
   const hours = Math.floor((diff / (1000*60*60)) % 24);
   const mins = Math.floor((diff / (1000*60)) % 60);
@@ -250,4 +225,4 @@ setInterval(() => {
 }, 1000);
 </script>
 </body>
-  </html>
+</html>
