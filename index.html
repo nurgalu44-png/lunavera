@@ -2,7 +2,7 @@
 <html lang="id">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 <title>Lunavera — Coming Soon</title>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
 <style>
@@ -15,8 +15,6 @@
 :root {
   --bg1: #0a0a0f;
   --bg2: #141424;
-  --text: #ffffff;
-  --muted: #b0b0bb;
   --accent: #e6c8a0;
 }
 
@@ -30,18 +28,18 @@ body {
               radial-gradient(900px 600px at 20% 90%, #1a1a2a 0%, transparent 70%),
               linear-gradient(145deg, var(--bg2), var(--bg1));
   position: relative;
-  overflow: hidden;
+  overflow-x: hidden;
 }
 
-/* BINTANG KEDIP (tetap ada agar tidak kosong) */
+/* Bintang latar kedip (opsional, biar tidak kosong) */
 body::before {
   content: "";
-  position: absolute;
+  position: fixed;
   inset: 0;
   pointer-events: none;
-  background-image: radial-gradient(2px 2px at 15px 40px, rgba(255,245,210,0.6) 1%, transparent 1%),
-                    radial-gradient(1px 1px at 70px 120px, rgba(255,245,210,0.4) 1%, transparent 1%),
-                    radial-gradient(2px 2px at 300px 80px, rgba(255,245,210,0.7) 1%, transparent 1%);
+  background-image: radial-gradient(2px 2px at 15px 40px, rgba(255,245,210,0.5) 1%, transparent 1%),
+                    radial-gradient(1px 1px at 70px 120px, rgba(255,245,210,0.3) 1%, transparent 1%),
+                    radial-gradient(2px 2px at 300px 80px, rgba(255,245,210,0.6) 1%, transparent 1%);
   background-size: 200px 200px, 150px 150px, 250px 250px;
   background-repeat: repeat;
   opacity: 0.4;
@@ -53,39 +51,39 @@ body::before {
   100% { opacity: 0.7; }
 }
 
-/* BULAN SABIT sesuai gambar WhatsApp: warna kuning keemasan, tipis, tanpa glow berlebihan */
+/* BULAN SABIT HITAM dengan pinggiran PUTIH */
 .moon {
   position: absolute;
-  top: 6%;
-  right: 8%;
-  width: 170px;
-  height: 170px;
+  top: 12%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 140px;
+  height: 140px;
   border-radius: 50%;
-  background: #f5d742;  /* warna dasar kuning keemasan seperti ikon WhatsApp */
-  box-shadow: 0 0 4px rgba(0,0,0,0.2); /* bayangan minimal, tidak glow */
+  background: #000000;  /* hitam solid */
+  box-shadow: 0 0 0 2px #ffffff; /* pinggiran putih rapi */
   z-index: 2;
   animation: moonFloat 6s ease-in-out infinite;
 }
 
-/* Bentuk sabit tipis dan runcing (mirip ikon WhatsApp) */
+/* Membentuk sabit (bagian yang terpotong) */
 .moon::after {
   content: "";
   position: absolute;
   width: 100%;
   height: 100%;
   border-radius: 50%;
-  background: radial-gradient(circle at 75% 35%, var(--bg1) 35%, transparent 70%);
-  mask: radial-gradient(circle at 75% 35%, transparent 22%, black 50%);
-  -webkit-mask: radial-gradient(circle at 75% 35%, transparent 22%, black 50%);
+  background: radial-gradient(circle at 70% 35%, transparent 25%, #000 50%);
+  mask: radial-gradient(circle at 70% 35%, transparent 20%, black 45%);
+  -webkit-mask: radial-gradient(circle at 70% 35%, transparent 20%, black 45%);
   top: 0;
   left: 0;
 }
 
-/* Animasi melayang saja, tanpa denyut cahaya */
 @keyframes moonFloat {
-  0% { transform: translateY(0px) rotate(0deg); }
-  50% { transform: translateY(-10px) rotate(2deg); }
-  100% { transform: translateY(0px) rotate(0deg); }
+  0% { transform: translateX(-50%) translateY(0px) rotate(0deg); }
+  50% { transform: translateX(-50%) translateY(-10px) rotate(2deg); }
+  100% { transform: translateX(-50%) translateY(0px) rotate(0deg); }
 }
 
 /* Container utama (glass) */
@@ -93,9 +91,10 @@ body::before {
   position: relative;
   width: 90%;
   max-width: 480px;
-  padding: 2.2rem 1.8rem;
+  margin-top: 80px;
+  padding: 2rem 1.5rem;
   text-align: center;
-  background: rgba(10, 10, 18, 0.5);
+  background: rgba(10, 10, 18, 0.55);
   backdrop-filter: blur(14px);
   border-radius: 56px;
   border: 1px solid rgba(255,255,255,0.1);
@@ -105,7 +104,7 @@ body::before {
 
 .logo {
   font-family: 'Playfair Display', serif;
-  font-size: 2.6rem;
+  font-size: 2.4rem;
   font-weight: 700;
   letter-spacing: 4px;
   background: linear-gradient(135deg, #fff, #e6d5b8);
@@ -117,7 +116,7 @@ body::before {
 .tag {
   margin-top: 8px;
   font-size: 0.85rem;
-  color: var(--muted);
+  color: #b0b0bb;
   letter-spacing: 1px;
 }
 
@@ -130,7 +129,7 @@ body::before {
 }
 
 .head {
-  font-size: 1.2rem;
+  font-size: 1.1rem;
   letter-spacing: 4px;
   font-weight: 500;
   color: #f2e8da;
@@ -139,7 +138,7 @@ body::before {
 
 .count {
   margin-top: 16px;
-  font-size: 2rem;
+  font-size: 1.8rem;
   font-weight: 600;
   font-family: monospace;
   background: linear-gradient(120deg, #fff, #ddcca8);
@@ -200,18 +199,23 @@ body::before {
   z-index: 10;
 }
 
+/* Responsif */
 @media (max-width: 560px) {
-  .moon { width: 100px; height: 100px; top: 3%; right: 5%; }
-  .logo { font-size: 2rem; }
+  .moon {
+    width: 100px;
+    height: 100px;
+    top: 8%;
+  }
+  .logo { font-size: 1.8rem; }
   .count { font-size: 1.4rem; }
-  .wrap { padding: 1.5rem; }
+  .wrap { margin-top: 70px; padding: 1.3rem; }
   .btn-main, .btn-secondary { width: 180px; }
 }
 </style>
 </head>
 <body>
 
-<div class="moon"></div>
+<div class="moon" aria-label="Bulan sabit hitam dengan pinggiran putih"></div>
 
 <div class="wrap">
   <div class="logo">LUNAVERA</div>
@@ -246,4 +250,4 @@ setInterval(() => {
 }, 1000);
 </script>
 </body>
-</html>
+  </html>
