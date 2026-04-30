@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lunavera</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+
+<style>
+:root{
+  --bg1:#0a0a0f;
+  --bg2:#1c1c2e;
+  --text:#ffffff;
+  --muted:#a0a0a8;
+  --line:rgba(255,255,255,0.15);
+}
+
+*{margin:0;padding:0;box-sizing:border-box}
+
+body{
+  font-family:'Inter',sans-serif;
+  color:var(--text);
+  min-height:100vh;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  background:
+    radial-gradient(1200px 600px at 80% 10%, #23233a 0%, transparent 60%),
+    radial-gradient(800px 500px at 20% 90%, #161626 0%, transparent 60%),
+    linear-gradient(180deg, var(--bg2), var(--bg1));
+  overflow:hidden;
+}
+
+/* 🌙 Bulan sabit */
+.moon{
+  position:absolute;
+  top:8%;
+  right:10%;
+  width:160px;
+  height:160px;
+  border-radius:50%;
+  background:#fff;
+  box-shadow:0 0 40px rgba(255,255,255,0.15);
+}
+
+.moon::after{
+  content:"";
+  position:absolute;
+  width:140px;
+  height:140px;
+  background:var(--bg1);
+  border-radius:50%;
+  top:10px;
+  left:40px;
+}
+
+/* Container */
+.wrap{
+  position:relative;
+  width:100%;
+  max-width:420px;
+  padding:20px;
+  text-align:center;
+  z-index:2;
+}
+
+/* Brand */
+.logo{
+  letter-spacing:6px;
+  font-weight:600;
+  font-size:34px;
+}
+
+.tag{
+  margin-top:10px;
+  color:var(--muted);
+  font-size:14px;
+}
+
+.hr{
+  margin:18px auto 10px;
+  width:70px;
+  height:1px;
+  background:var(--line);
+}
+
+.head{
+  margin-top:16px;
+  font-size:18px;
+  letter-spacing:3px;
+  color:#e6e6ef;
+}
+
+/* Countdown */
+.count{
+  margin-top:14px;
+  font-size:22px;
+  font-weight:600;
+}
+
+/* Buttons */
+.actions{
+  margin-top:25px;
+  display:flex;
+  flex-direction:column;
+  gap:10px;
+  align-items:center;
+}
+
+.btn-main{
+  width:220px;
+  padding:12px;
+  border-radius:999px;
+  border:1px solid #fff;
+  text-decoration:none;
+  color:#fff;
+  font-size:14px;
+  transition:.25s;
+}
+
+.btn-main:hover{
+  background:#fff;
+  color:#000;
+}
+
+.btn-secondary{
+  width:180px;
+  padding:10px;
+  border-radius:999px;
+  border:1px solid var(--line);
+  text-decoration:none;
+  color:#aaa;
+  font-size:13px;
+}
+
+/* Footer */
+.footer{
+  position:absolute;
+  bottom:14px;
+  width:100%;
+  text-align:center;
+  font-size:11px;
+  color:#666;
+}
+
+/* Responsive */
+@media(min-width:768px){
+  .logo{font-size:48px}
+  .head{font-size:22px}
+  .count{font-size:26px}
+}
+</style>
+</head>
+
+<body>
+
+<div class="moon"></div>
+
+<div class="wrap">
+  <div class="logo">LUNAVERA</div>
+  <div class="tag">Quiet design. Clear presence.</div>
+
+  <div class="hr"></div>
+
+  <div class="head">COMING SOON</div>
+  <div id="count" class="count">--d --h --m</div>
+
+  <div class="actions">
+    <!-- Tombol utama -->
+    <a class="btn-main" href="https://instagram.com/">Follow Instagram</a>
+
+    <!-- Tombol kedua -->
+    <a class="btn-secondary" href="https://wa.me/6281234567890?text=Info%20Lunavera">Notify WhatsApp</a>
+  </div>
+</div>
+
+<div class="footer">© Lunavera</div>
+
+<script>
+const launch = new Date("2026-06-01 00:00:00").getTime();
+const el = document.getElementById("count");
+
+setInterval(()=>{
+  const now = Date.now();
+  const d = launch - now;
+
+  if(d <= 0){
+    el.innerHTML = "WE ARE LIVE";
+    return;
+  }
+
+  const days = Math.floor(d / (1000*60*60*24));
+  const hours = Math.floor((d / (1000*60*60)) % 24);
+  const mins = Math.floor((d / (1000*60)) % 60);
+
+  el.innerHTML = `${days}d ${hours}h ${mins}m`;
+},1000);
+</script>
+
+</body>
+  </html>
