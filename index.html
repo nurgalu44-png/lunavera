@@ -2,377 +2,254 @@
 <html lang="id">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-<title>Lunavera — Coming Soon | Quiet Design, Clear Presence</title>
-<meta name="description" content="Lunavera hadir dengan ketenangan visual dan kejelasan makna. Pantau kedatangan kami.">
-<meta name="theme-color" content="#0a0a0f">
-
-<!-- Google Fonts: Inter + Playfair Display -->
-<link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,600&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet">
-
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lunavera — Coming Soon</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
 <style>
-  * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-  }
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
 
-  :root {
-    --bg1: #0a0a0f;
-    --bg2: #141424;
-    --text: #ffffff;
-    --muted: #b0b0bb;
-    --accent: #e6c8a0;
-    --line-glow: rgba(230, 200, 160, 0.4);
-  }
+:root {
+  --bg1: #0a0a0f;
+  --bg2: #141424;
+  --text: #ffffff;
+  --muted: #b0b0bb;
+  --accent: #e6c8a0;
+}
 
-  body {
-    font-family: 'Inter', sans-serif;
-    background: radial-gradient(1300px 700px at 80% 10%, #23233a 0%, transparent 70%),
-                radial-gradient(900px 600px at 20% 90%, #1a1a2a 0%, transparent 70%),
-                linear-gradient(145deg, var(--bg2), var(--bg1));
-    min-height: 100vh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    position: relative;
-    overflow-x: hidden;
-    color: var(--text);
-  }
+body {
+  font-family: 'Inter', sans-serif;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: radial-gradient(1300px 700px at 80% 10%, #23233a 0%, transparent 70%),
+              radial-gradient(900px 600px at 20% 90%, #1a1a2a 0%, transparent 70%),
+              linear-gradient(145deg, var(--bg2), var(--bg1));
+  position: relative;
+  overflow: hidden;
+}
 
-  /* Bintang latar (berkedip) */
-  body::before {
-    content: "";
-    position: fixed;
-    inset: 0;
-    pointer-events: none;
-    background-image: radial-gradient(2px 2px at 15px 40px, rgba(255,245,210,0.7) 1%, transparent 1%),
-                      radial-gradient(1px 1px at 70px 120px, rgba(255,245,210,0.5) 1%, transparent 1%),
-                      radial-gradient(2px 2px at 140px 280px, rgba(255,245,210,0.8) 1%, transparent 1%),
-                      radial-gradient(1px 1px at 90px 500px, rgba(255,245,210,0.6) 1%, transparent 1%),
-                      radial-gradient(2px 2px at 300px 80px, rgba(255,245,210,0.7) 1%, transparent 1%),
-                      radial-gradient(1px 1px at 500px 200px, rgba(255,245,210,0.5) 1%, transparent 1%),
-                      radial-gradient(2px 2px at 800px 650px, rgba(255,245,210,0.8) 1%, transparent 1%),
-                      radial-gradient(1px 1px at 1100px 350px, rgba(255,245,210,0.6) 1%, transparent 1%),
-                      radial-gradient(1px 1px at 1400px 100px, rgba(255,245,210,0.5) 1%, transparent 1%);
-    background-size: 180px 180px, 140px 140px, 220px 220px, 200px 200px, 250px 250px, 160px 160px, 300px 300px, 180px 180px, 200px 200px;
-    background-repeat: repeat;
-    opacity: 0.5;
-    animation: starTwinkle 4s infinite alternate;
-  }
+/* BINTANG KEDIP (opsional, biar tetap hidup) */
+body::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background-image: radial-gradient(2px 2px at 15px 40px, rgba(255,245,210,0.6) 1%, transparent 1%),
+                    radial-gradient(1px 1px at 70px 120px, rgba(255,245,210,0.4) 1%, transparent 1%),
+                    radial-gradient(2px 2px at 300px 80px, rgba(255,245,210,0.7) 1%, transparent 1%);
+  background-size: 200px 200px, 150px 150px, 250px 250px;
+  background-repeat: repeat;
+  opacity: 0.4;
+  animation: starTwinkle 5s infinite alternate;
+}
 
-  @keyframes starTwinkle {
-    0% { opacity: 0.3; }
-    100% { opacity: 0.8; }
-  }
+@keyframes starTwinkle {
+  0% { opacity: 0.2; }
+  100% { opacity: 0.7; }
+}
 
-  /* BULAN SABIT dengan efek glow + gerakan */
-  .moon {
-    position: absolute;
-    top: 6%;
-    right: 8%;
-    width: 170px;
-    height: 170px;
-    border-radius: 50%;
-    background: radial-gradient(circle at 35% 30%, #fffbe6, #ffe6b3, #fdcc8a);
-    box-shadow: 0 0 60px rgba(255, 210, 120, 0.7), 0 0 120px rgba(255, 190, 80, 0.4);
-    z-index: 2;
-    animation: moonFloat 7s ease-in-out infinite, moonGlowPulse 3.5s ease-in-out infinite;
-    cursor: default;
-    transition: transform 0.2s;
-  }
+/* BULAN SABIT TIPIS & RUNcing (seperti di screenshot) */
+.moon {
+  position: absolute;
+  top: 6%;
+  right: 8%;
+  width: 170px;
+  height: 170px;
+  border-radius: 50%;
+  background: radial-gradient(circle at 30% 30%, #fff9e6, #ffeaaf, #fdcc8a);
+  box-shadow: 0 0 40px rgba(255, 210, 120, 0.5), 0 0 100px rgba(255, 190, 80, 0.3);
+  z-index: 2;
+  animation: moonFloat 6s ease-in-out infinite, moonGlow 3s ease-in-out infinite;
+}
 
-  /* Bentuk sabit menggunakan mask (lebih alami) */
-  .moon::after {
-    content: "";
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    border-radius: 50%;
-    background: radial-gradient(circle at 72% 38%, #000 40%, transparent 70%);
-    mask: radial-gradient(circle at 72% 38%, transparent 12%, black 40%);
-    -webkit-mask: radial-gradient(circle at 72% 38%, transparent 12%, black 40%);
-    top: 0;
-    left: 0;
-  }
+/* Bentuk sabit tipis dan ujung runcing */
+.moon::after {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  background: radial-gradient(circle at 75% 35%, #000 30%, transparent 70%);
+  mask: radial-gradient(circle at 75% 35%, transparent 18%, black 45%);
+  -webkit-mask: radial-gradient(circle at 75% 35%, transparent 18%, black 45%);
+  top: 0;
+  left: 0;
+}
 
-  @keyframes moonFloat {
-    0% {
-      transform: translateY(0px) rotate(0deg);
-    }
-    50% {
-      transform: translateY(-15px) rotate(3deg);
-    }
-    100% {
-      transform: translateY(0px) rotate(0deg);
-    }
-  }
+/* Animasi melayang */
+@keyframes moonFloat {
+  0% { transform: translateY(0px) rotate(0deg); }
+  50% { transform: translateY(-12px) rotate(2deg); }
+  100% { transform: translateY(0px) rotate(0deg); }
+}
 
-  @keyframes moonGlowPulse {
-    0% {
-      box-shadow: 0 0 50px rgba(255, 210, 120, 0.5), 0 0 100px rgba(255, 180, 70, 0.3);
-      opacity: 0.95;
-    }
-    50% {
-      box-shadow: 0 0 80px rgba(255, 220, 140, 0.9), 0 0 160px rgba(255, 200, 90, 0.6);
-      opacity: 1;
-    }
-    100% {
-      box-shadow: 0 0 50px rgba(255, 210, 120, 0.5), 0 0 100px rgba(255, 180, 70, 0.3);
-      opacity: 0.95;
-    }
-  }
+@keyframes moonGlow {
+  0% { box-shadow: 0 0 35px rgba(255,210,120,0.4), 0 0 80px rgba(255,180,70,0.2); }
+  50% { box-shadow: 0 0 65px rgba(255,220,140,0.8), 0 0 140px rgba(255,200,90,0.5); }
+  100% { box-shadow: 0 0 35px rgba(255,210,120,0.4), 0 0 80px rgba(255,180,70,0.2); }
+}
 
-  /* Container utama (kartu glassmorphism) */
-  .wrap {
-    position: relative;
-    width: 90%;
-    max-width: 480px;
-    margin: 20px auto;
-    padding: 2.2rem 1.8rem;
-    text-align: center;
-    z-index: 10;
-    background: rgba(10, 10, 18, 0.45);
-    backdrop-filter: blur(12px);
-    border-radius: 64px;
-    border: 1px solid rgba(255, 255, 255, 0.12);
-    box-shadow: 0 20px 35px -12px rgba(0, 0, 0, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.05);
-    transition: all 0.3s ease;
-  }
+/* Container utama (glass) */
+.wrap {
+  position: relative;
+  width: 90%;
+  max-width: 480px;
+  padding: 2.2rem 1.8rem;
+  text-align: center;
+  background: rgba(10, 10, 18, 0.5);
+  backdrop-filter: blur(14px);
+  border-radius: 56px;
+  border: 1px solid rgba(255,255,255,0.1);
+  box-shadow: 0 20px 35px -12px rgba(0,0,0,0.4);
+  z-index: 10;
+}
 
-  .wrap:hover {
-    backdrop-filter: blur(16px);
-    background: rgba(10, 10, 18, 0.55);
-    border-color: rgba(255, 230, 170, 0.2);
-  }
+.logo {
+  font-family: 'Playfair Display', serif;
+  font-size: 2.6rem;
+  font-weight: 700;
+  letter-spacing: 4px;
+  background: linear-gradient(135deg, #fff, #e6d5b8);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
 
-  /* Logo dengan font serif elegan */
-  .logo {
-    font-family: 'Playfair Display', serif;
-    font-weight: 700;
-    font-size: 2.6rem;
-    letter-spacing: 4px;
-    background: linear-gradient(135deg, #FFFFFF, #e6d5b8);
-    background-clip: text;
-    -webkit-background-clip: text;
-    color: transparent;
-    text-shadow: 0 2px 5px rgba(0,0,0,0.2);
-  }
+.tag {
+  margin-top: 8px;
+  font-size: 0.85rem;
+  color: var(--muted);
+  letter-spacing: 1px;
+}
 
-  .tag {
-    margin-top: 8px;
-    font-size: 0.85rem;
-    font-weight: 300;
-    letter-spacing: 1.5px;
-    color: var(--muted);
-  }
+.hr {
+  margin: 22px auto 18px;
+  width: 70px;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, var(--accent), #c2a070, transparent);
+  border-radius: 4px;
+}
 
-  /* Garis dekorasi gradien */
-  .hr {
-    margin: 22px auto 18px;
-    width: 70px;
-    height: 2px;
-    background: linear-gradient(90deg, transparent, var(--accent), #c2a070, var(--accent), transparent);
-    border-radius: 4px;
-    opacity: 0.7;
-  }
+.head {
+  font-size: 1.2rem;
+  letter-spacing: 4px;
+  font-weight: 500;
+  color: #f2e8da;
+  text-transform: uppercase;
+}
 
-  .head {
-    font-size: 1.2rem;
-    font-weight: 500;
-    letter-spacing: 4px;
-    color: #f2e8da;
-    text-transform: uppercase;
-  }
+.count {
+  margin-top: 16px;
+  font-size: 2rem;
+  font-weight: 600;
+  font-family: monospace;
+  background: linear-gradient(120deg, #fff, #ddcca8);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
 
-  /* Countdown dengan detik */
-  .count {
-    margin-top: 16px;
-    font-size: 2.1rem;
-    font-weight: 600;
-    font-family: 'Inter', monospace;
-    letter-spacing: 2px;
-    background: linear-gradient(120deg, #fff, #ddcca8);
-    background-clip: text;
-    -webkit-background-clip: text;
-    color: transparent;
-    text-shadow: 0 0 12px rgba(255,215,140,0.3);
-  }
+.actions {
+  margin-top: 32px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  align-items: center;
+}
 
-  /* Tombol area */
-  .actions {
-    margin-top: 32px;
-    display: flex;
-    flex-direction: column;
-    gap: 14px;
-    align-items: center;
-  }
+.btn-main, .btn-secondary {
+  width: 220px;
+  padding: 12px;
+  border-radius: 60px;
+  text-decoration: none;
+  font-weight: 500;
+  transition: 0.25s ease;
+  text-align: center;
+}
 
-  .btn-main, .btn-secondary {
-    display: inline-block;
-    width: 240px;
-    padding: 12px 20px;
-    border-radius: 60px;
-    text-decoration: none;
-    font-weight: 500;
-    font-size: 0.9rem;
-    transition: all 0.3s cubic-bezier(0.2, 0.9, 0.4, 1.1);
-    text-align: center;
-    backdrop-filter: blur(4px);
-  }
+.btn-main {
+  background: rgba(255,255,245,0.08);
+  border: 1px solid rgba(255,235,200,0.5);
+  color: #fff3e0;
+}
 
-  .btn-main {
-    background: rgba(255, 255, 255, 0.05);
-    border: 1px solid rgba(255, 235, 200, 0.5);
-    color: #fff3e0;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.2);
-  }
+.btn-main:hover {
+  background: #fff3e0;
+  color: #0f0f1a;
+  transform: scale(1.02);
+}
 
-  .btn-main:hover {
-    background: #fff3e0;
-    color: #0f0f1a;
-    border-color: #fff;
-    transform: scale(1.02) translateY(-2px);
-    box-shadow: 0 12px 20px -10px rgba(0,0,0,0.4), 0 0 0 1px rgba(255,230,150,0.4);
-  }
+.btn-secondary {
+  background: rgba(20,20,35,0.7);
+  border: 1px solid rgba(255,255,255,0.2);
+  color: #cdcddf;
+}
 
-  .btn-secondary {
-    background: rgba(20, 20, 35, 0.7);
-    border: 1px solid rgba(255, 255, 255, 0.2);
-    color: #cdcddf;
-  }
+.btn-secondary:hover {
+  background: rgba(230,200,160,0.2);
+  border-color: #e6c8a0;
+  color: #fff;
+}
 
-  .btn-secondary:hover {
-    background: rgba(230, 200, 160, 0.15);
-    border-color: rgba(230, 200, 160, 0.6);
-    color: #ffefcf;
-    transform: translateY(-2px);
-    box-shadow: 0 8px 18px -8px black;
-  }
+.footer {
+  position: absolute;
+  bottom: 18px;
+  width: 100%;
+  text-align: center;
+  font-size: 0.7rem;
+  color: #6a6a7c;
+  z-index: 10;
+}
 
-  /* Footer dengan efek minimal */
-  .footer {
-    position: absolute;
-    bottom: 18px;
-    left: 0;
-    width: 100%;
-    text-align: center;
-    font-size: 0.7rem;
-    font-weight: 300;
-    color: #6a6a7c;
-    letter-spacing: 1px;
-    backdrop-filter: blur(4px);
-    padding: 6px;
-    z-index: 10;
-  }
-
-  .footer span {
-    opacity: 0.7;
-  }
-
-  /* Responsive: layar kecil */
-  @media (max-width: 560px) {
-    .moon {
-      width: 110px;
-      height: 110px;
-      top: 4%;
-      right: 5%;
-    }
-    .logo {
-      font-size: 2rem;
-    }
-    .count {
-      font-size: 1.6rem;
-    }
-    .wrap {
-      padding: 1.6rem 1.2rem;
-      border-radius: 48px;
-    }
-    .btn-main, .btn-secondary {
-      width: 200px;
-      padding: 10px 16px;
-      font-size: 0.8rem;
-    }
-    .head {
-      font-size: 1rem;
-      letter-spacing: 3px;
-    }
-  }
-
-  /* layar sedang (tablet) */
-  @media (min-width: 768px) {
-    .logo {
-      font-size: 3.4rem;
-    }
-    .count {
-      font-size: 2.4rem;
-    }
-    .wrap {
-      max-width: 540px;
-    }
-  }
-
-  /* Hilangkan efek mask kalau browser tidak support (fallback) */
-  @supports not (mask: radial-gradient()) {
-    .moon::after {
-      background: radial-gradient(circle at 72% 38%, var(--bg1) 45%, transparent 70%);
-      mask: none;
-    }
-  }
+@media (max-width: 560px) {
+  .moon { width: 100px; height: 100px; top: 3%; right: 5%; }
+  .logo { font-size: 2rem; }
+  .count { font-size: 1.4rem; }
+  .wrap { padding: 1.5rem; }
+  .btn-main, .btn-secondary { width: 180px; }
+}
 </style>
 </head>
 <body>
 
-<div class="moon" aria-label="Bulan sabit bercahaya"></div>
+<div class="moon"></div>
 
 <div class="wrap">
   <div class="logo">LUNAVERA</div>
   <div class="tag">Quiet design. Clear presence.</div>
   <div class="hr"></div>
   <div class="head">COMING SOON</div>
-  <div id="countdownDisplay" class="count">--d --h --m --s</div>
-
+  <div id="count" class="count">--d --h --m --s</div>
   <div class="actions">
-    <!-- Ganti link dengan akun Instagram asli jika perlu -->
-    <a class="btn-main" href="https://instagram.com/" target="_blank" rel="noopener noreferrer">✨ Follow Instagram</a>
-    <!-- Ganti nomor WhatsApp dengan milikmu -->
-    <a class="btn-secondary" href="https://wa.me/6282336056882?text=Halo%20Lunavera%2C%20tunggu%20rilismu!" target="_blank" rel="noopener noreferrer">📬 Notify WhatsApp</a>
+    <a class="btn-main" href="https://instagram.com/" target="_blank">✨ Follow Instagram</a>
+    <a class="btn-secondary" href="https://wa.me/6282336056882" target="_blank">📬 Notify WhatsApp</a>
   </div>
 </div>
 
-<div class="footer">
-  <span>© 2026 Lunavera — ༄  quiet presence  ༄</span>
-</div>
+<div class="footer">© Lunavera — quiet presence</div>
 
 <script>
-  (function() {
-    // Tanggal target (tahun-bulan-tanggal jam:menit:detik)
-    const targetDate = new Date("2026-06-01 00:00:00").getTime();
-    const countdownElement = document.getElementById("countdownDisplay");
+const target = new Date("2027-06-01 00:00:00").getTime();
+const el = document.getElementById("count");
 
-    function updateCountdown() {
-      const now = Date.now();
-      const distance = targetDate - now;
-
-      if (distance <= 0) {
-        countdownElement.innerHTML = "✦  WE ARE LIVE  ✦";
-        return;
-      }
-
-      const days = Math.floor(distance / (1000 * 60 * 60 * 24));
-      const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-      const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-      const seconds = Math.floor((distance % (1000 * 60)) / 1000);
-
-      countdownElement.innerHTML = `${days}d ${hours}h ${minutes}m ${seconds}s`;
-    }
-
-    updateCountdown();
-    const interval = setInterval(updateCountdown, 1000);
-
-    // Cleanup (optional namun tidak wajib karena sekali load)
-    window.addEventListener("beforeunload", () => clearInterval(interval));
-  })();
+setInterval(() => {
+  const now = Date.now();
+  const diff = target - now;
+  if (diff <= 0) {
+    el.innerHTML = "WE ARE LIVE";
+    return;
+  }
+  const days = Math.floor(diff / (1000*60*60*24));
+  const hours = Math.floor((diff / (1000*60*60)) % 24);
+  const mins = Math.floor((diff / (1000*60)) % 60);
+  const secs = Math.floor((diff / 1000) % 60);
+  el.innerHTML = `${days}d ${hours}h ${mins}m ${secs}s`;
+}, 1000);
 </script>
 </body>
-  </html>
+</html>
