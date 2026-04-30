@@ -33,7 +33,7 @@ body {
   overflow: hidden;
 }
 
-/* BINTANG KEDIP (opsional, biar tetap hidup) */
+/* BINTANG KEDIP (tetap ada agar tidak kosong) */
 body::before {
   content: "";
   position: absolute;
@@ -53,7 +53,7 @@ body::before {
   100% { opacity: 0.7; }
 }
 
-/* BULAN SABIT TIPIS & RUNcing (seperti di screenshot) */
+/* BULAN SABIT sesuai gambar WhatsApp: warna kuning keemasan, tipis, tanpa glow berlebihan */
 .moon {
   position: absolute;
   top: 6%;
@@ -61,37 +61,31 @@ body::before {
   width: 170px;
   height: 170px;
   border-radius: 50%;
-  background: radial-gradient(circle at 30% 30%, #fff9e6, #ffeaaf, #fdcc8a);
-  box-shadow: 0 0 40px rgba(255, 210, 120, 0.5), 0 0 100px rgba(255, 190, 80, 0.3);
+  background: #f5d742;  /* warna dasar kuning keemasan seperti ikon WhatsApp */
+  box-shadow: 0 0 4px rgba(0,0,0,0.2); /* bayangan minimal, tidak glow */
   z-index: 2;
-  animation: moonFloat 6s ease-in-out infinite, moonGlow 3s ease-in-out infinite;
+  animation: moonFloat 6s ease-in-out infinite;
 }
 
-/* Bentuk sabit tipis dan ujung runcing */
+/* Bentuk sabit tipis dan runcing (mirip ikon WhatsApp) */
 .moon::after {
   content: "";
   position: absolute;
   width: 100%;
   height: 100%;
   border-radius: 50%;
-  background: radial-gradient(circle at 75% 35%, #000 30%, transparent 70%);
-  mask: radial-gradient(circle at 75% 35%, transparent 18%, black 45%);
-  -webkit-mask: radial-gradient(circle at 75% 35%, transparent 18%, black 45%);
+  background: radial-gradient(circle at 75% 35%, var(--bg1) 35%, transparent 70%);
+  mask: radial-gradient(circle at 75% 35%, transparent 22%, black 50%);
+  -webkit-mask: radial-gradient(circle at 75% 35%, transparent 22%, black 50%);
   top: 0;
   left: 0;
 }
 
-/* Animasi melayang */
+/* Animasi melayang saja, tanpa denyut cahaya */
 @keyframes moonFloat {
   0% { transform: translateY(0px) rotate(0deg); }
-  50% { transform: translateY(-12px) rotate(2deg); }
+  50% { transform: translateY(-10px) rotate(2deg); }
   100% { transform: translateY(0px) rotate(0deg); }
-}
-
-@keyframes moonGlow {
-  0% { box-shadow: 0 0 35px rgba(255,210,120,0.4), 0 0 80px rgba(255,180,70,0.2); }
-  50% { box-shadow: 0 0 65px rgba(255,220,140,0.8), 0 0 140px rgba(255,200,90,0.5); }
-  100% { box-shadow: 0 0 35px rgba(255,210,120,0.4), 0 0 80px rgba(255,180,70,0.2); }
 }
 
 /* Container utama (glass) */
